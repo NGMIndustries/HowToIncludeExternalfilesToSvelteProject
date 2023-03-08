@@ -60,6 +60,15 @@ async function fetchLoopringNFts() {
             accountId: accountInfo.data.accountId,
         },
         eddsaKey.sk);
+    const balances = await userAPI.getUserNFTBalances(
+        {
+            accountId: accountInfo.data.accountId,
+            metadata: true,
+        },
+        apiKey.apiKey
+    );
+    console.log("hereee")
+    console.log("balances",balances.userNFTBalances)
 
 }
 
