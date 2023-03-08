@@ -34,17 +34,17 @@ async function connectMetaMask() {
 
 
 async function fetchLoopringNFts() {
-    console.log("Button clicked!");
-    address = "0x9552cfce60429863D4A7D8205457EC4AC05857dC"
+    console.log("Button clicked!", window.ethereum.selectedAddress);
+    address = window.ethereum.selectedAddress
     const userAPI = new UserAPI({
         chainId: 1,
     });
     const accountInfo = await axios.get(
         `https://api3.loopring.io/api/v3/account?owner=${address}`
     );
-    console.log(accountInfo.data.owner)
+    // console.log(accountInfo.data.owner)
     const web3 = new Web3(window.ethereum);
-    console.log(web3)
+    // console.log(web3)
     const eddsaKey = await generateKeyPair({
         isMobile: false,
         address: address,
@@ -67,7 +67,7 @@ async function fetchLoopringNFts() {
         },
         apiKey.apiKey
     );
-    console.log("hereee")
+  
     console.log("balances",balances.userNFTBalances)
 
 }
