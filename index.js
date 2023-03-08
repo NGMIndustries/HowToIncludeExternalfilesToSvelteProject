@@ -42,7 +42,25 @@ async function fetchLoopringNFts() {
     const accountInfo = await axios.get(
         `https://api3.loopring.io/api/v3/account?owner=${address}`
     );
-        console.log(accountInfo.data.owner)
+    console.log(accountInfo.data.owner)
+    const web3 = new Web3(window.ethereum);
+    console.log(web3)
+    const eddsaKey = await generateKeyPair({
+        isMobile: false,
+        address: address,
+        walletType: ConnectorNames.Gamestop,
+        chainId: 1,
+        keySeed:
+            "Sign this message to access Loopring Exchange: 0x0BABA1Ad5bE3a5C0a66E7ac838a129Bf948f1eA4 with key nonce: 0",
+        web3: web3,
+    });
+
+    const apiKey = await userAPI.getUserApiKey(
+        {
+            accountId: accountInfo.data.accountId,
+        },
+        eddsaKey.sk);
+
 }
 
 var button = document.getElementById("connectMetaMask");
