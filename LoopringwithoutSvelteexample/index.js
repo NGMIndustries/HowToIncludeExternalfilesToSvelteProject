@@ -35,7 +35,7 @@ async function connectMetaMask() {
 
 async function fetchLoopringNFts() {
     console.log("Button clicked!", window.ethereum.selectedAddress);
-    address = "0x9552cfce60429863D4A7D8205457EC4AC05857dC"
+    address = window.ethereum.selectedAddress
     const userAPI = new UserAPI({
         chainId: 1,
     });
@@ -72,7 +72,8 @@ async function fetchLoopringNFts() {
 
 }
 
-
+var button2 = document.getElementById("connectMetaMask");
+button2.addEventListener("click",connectMetaMask);
 
 var button = document.getElementById("fetchLoopring");
 button.addEventListener("click", fetchLoopringNFts);
