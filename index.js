@@ -35,7 +35,7 @@ async function connectMetaMask() {
 
 async function fetchLoopringNFts() {
     console.log("Button clicked!", window.ethereum.selectedAddress);
-    address = window.ethereum.selectedAddress
+    address = "0x9552cfce60429863D4A7D8205457EC4AC05857dC"
     const userAPI = new UserAPI({
         chainId: 1,
     });
@@ -48,7 +48,7 @@ async function fetchLoopringNFts() {
     const eddsaKey = await generateKeyPair({
         isMobile: false,
         address: address,
-        walletType: ConnectorNames.Gamestop,
+        walletType: ConnectorNames.MetaMask,
         chainId: 1,
         keySeed:
             "Sign this message to access Loopring Exchange: 0x0BABA1Ad5bE3a5C0a66E7ac838a129Bf948f1eA4 with key nonce: 0",
@@ -72,8 +72,7 @@ async function fetchLoopringNFts() {
 
 }
 
-var button = document.getElementById("connectMetaMask");
-button.addEventListener("click", connectMetaMask);
+
 
 var button = document.getElementById("fetchLoopring");
 button.addEventListener("click", fetchLoopringNFts);
